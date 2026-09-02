@@ -1,14 +1,12 @@
-> **Celaya Solutions Research Course Edition.** Start with [COURSE_EDITION.md](COURSE_EDITION.md). Use fake data only.
+> **Celaya Solutions Research Course Edition.** Forks and changes are welcome for noncommercial use. This CSR branding must remain. Start with [COURSE_EDITION.md](COURSE_EDITION.md) and use fake data only.
 
 <img src="readme-banner.png" alt="OpenPersonalTraining preview" />
 
-# OpenPersonalTraining: The Open-Source Trainerize & TrueCoach Alternative
+# OpenPersonalTraining: The Source-Available Trainerize & TrueCoach Alternative
 
-[![Deploy with Clawnify](https://app.clawnify.com/deploy-button.svg)](https://app.clawnify.com/deploy?repo=clawnify/OpenPersonalTraining)
+An all-in-one course project for personal trainers and online coaches. Manage clients, build workouts from a library of **800+ illustrated exercises**, assign programs, schedule sessions, and track payments. Built with **Preact + Tailwind CSS + Hono + SQLite**.
 
-An all-in-one platform for personal trainers and online coaches. Manage your clients, build workouts from a library of **800+ illustrated exercises**, assign programs, schedule sessions, and track payments — all in one place. Built with **Preact + Tailwind CSS + Hono + D1**. Deploys to Cloudflare Workers via [Clawnify](https://clawnify.com).
-
-Think of it as an open-source, self-hostable alternative to **Trainerize**, **TrueCoach**, or **My PT Hub** — the coaching admin stack you actually own and can customize.
+Think of it as a source-available, self-hostable alternative to **Trainerize**, **TrueCoach**, or **My PT Hub** for learning and other noncommercial work.
 
 ## Features
 
@@ -20,7 +18,7 @@ Think of it as an open-source, self-hostable alternative to **Trainerize**, **Tr
 - **Payments** — a simple ledger for session packs and monthly coaching, with collected vs. outstanding totals.
 - **Dashboard** — today's schedule plus at-a-glance client, workout, revenue, and outstanding stats.
 
-Every screen is also a clean JSON API, so the Clawnify agent can run the admin for you — "build a push day and assign it to Casey for Monday", "who owes me money?" See [`agent.md`](agent.md).
+Every screen is also a clean JSON API, so a coding agent can run the admin for you—“build a push day and assign it to Casey for Monday” or “who owes me money?” See [`agent.md`](agent.md).
 
 ## The exercise dataset
 
@@ -29,7 +27,7 @@ The library is seeded at build time from the [free-exercise-db](https://github.c
 ## Quickstart
 
 ```bash
-git clone https://github.com/clawnify/OpenPersonalTraining.git
+git clone https://github.com/celaya-solutions/csr-open-personal-training.git
 cd open-personal-training
 pnpm install
 pnpm dev
@@ -44,7 +42,7 @@ Open `http://localhost:5173`. The D1 schema — tables plus the full exercise li
 | **Frontend** | Preact, TypeScript, Tailwind CSS v4, Vite |
 | **Backend** | Hono (Cloudflare Worker), `@hono/zod-openapi` |
 | **Database** | D1 (SQLite at the edge) via `@clawnify/db` |
-| **Hosting** | Cloudflare Workers (Workers for Platforms via Clawnify) |
+| **Hosting** | Railway backend and Vercel frontend |
 
 ## Data model
 
@@ -52,4 +50,4 @@ Open `http://localhost:5173`. The D1 schema — tables plus the full exercise li
 
 ## License
 
-MIT — see [LICENSE](LICENSE).
+CSR Noncommercial License 1.0. Fork, study, modify, and share for noncommercial purposes. Keep the Celaya Solutions Research Course Edition branding. See [LICENSE](LICENSE).
