@@ -23,7 +23,10 @@ export function Sidebar({ currentView }: { currentView: View }) {
         <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary text-primary-foreground">
           <Dumbbell className="h-4 w-4" />
         </div>
-        <span className="text-base font-semibold text-sidebar-foreground">Trainer Studio</span>
+        <div className="min-w-0">
+          <span className="block text-base font-semibold text-sidebar-foreground">Trainer Studio</span>
+          <span className="block text-[9px] leading-tight text-muted-foreground">Celaya Solutions Research Course Edition</span>
+        </div>
       </div>
       <Separator />
       <nav className="flex-1 space-y-1 overflow-y-auto px-2 py-3">
