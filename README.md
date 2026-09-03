@@ -1,55 +1,79 @@
-> **Celaya Solutions Research Course Edition.** Start with [COURSE_EDITION.md](COURSE_EDITION.md). Use fake data only.
+> **Celaya Solutions Research Course Edition.** Read [COURSE_EDITION.md](COURSE_EDITION.md) before you start. Use fake data only.
 
-<img src="readme-banner.png" alt="OpenPersonalTraining preview" />
+# Trainer Studio
 
-# OpenPersonalTraining: The Open-Source Trainerize & TrueCoach Alternative
+Project 05 on the [Zero to Agent project shelf](https://zerotoagent.org/course/landing.html#projects). Core track. You fork this at Level 6 and it stays yours through Level 9.
 
-[![Deploy with Clawnify](https://app.clawnify.com/deploy-button.svg)](https://app.clawnify.com/deploy?repo=clawnify/OpenPersonalTraining)
+Software for a personal trainer. The people you coach, a library of exercises to build workouts from, the workouts themselves, a calendar of sessions, and a record of who has paid.
 
-An all-in-one platform for personal trainers and online coaches. Manage your clients, build workouts from a library of **800+ illustrated exercises**, assign programs, schedule sessions, and track payments — all in one place. Built with **Preact + Tailwind CSS + Hono + D1**. Deploys to Cloudflare Workers via [Clawnify](https://clawnify.com).
+## Why this one is on the shelf
 
-Think of it as an open-source, self-hostable alternative to **Trainerize**, **TrueCoach**, or **My PT Hub** — the coaching admin stack you actually own and can customize.
+Two reasons. First, it starts full. The exercise library is 873 exercises, seeded into the database before you write a line, so you are working with real volume from minute one instead of three rows you typed in yourself. Searching and paging through that is a different problem than searching through nothing.
 
-## Features
+Second, it is the only Core project that lets a stranger see something without logging in. You can turn any workout into a public link and send it to a client's phone, and you can take the link back. That is a small, safe first look at the question every real app has to answer: who is allowed to see this.
 
-- **Clients** — a lightweight CRM for trainees: goal, status, contact, session history, and outstanding balance at a glance.
-- **Exercise library** — 800+ exercises seeded in, each with a demonstration image, searchable and filterable by body part, target muscle, and equipment, plus step-by-step instructions.
-- **Workout builder** — assemble reusable workouts from the library with per-exercise sets, reps (`8-12`, `AMRAP`, `30s`…), rest, and notes. Reorder freely.
-- **Share with clients** — generate a public, mobile-friendly link for any workout (no login) that your client opens on their phone with images and instructions, or saves as a PDF. Revoke it any time.
-- **Schedule** — one calendar for in-person 1-on-1s, remotely-assigned programs, consultations, and assessments. Mark completed / no-show / cancelled.
-- **Payments** — a simple ledger for session packs and monthly coaching, with collected vs. outstanding totals.
-- **Dashboard** — today's schedule plus at-a-glance client, workout, revenue, and outstanding stats.
+## What you have to change to pass
 
-Every screen is also a clean JSON API, so the Clawnify agent can run the admin for you — "build a push day and assign it to Casey for Monday", "who owes me money?" See [`agent.md`](agent.md).
+The same five things are asked of every project on the shelf:
 
-## The exercise dataset
+1. A change you can see on the screen.
+2. A change to the server or to what gets stored.
+3. The frontend live on Vercel.
+4. The backend running on Railway, still running tomorrow.
+5. A three minute demo: the problem, the before, the after.
 
-The library is seeded at build time from the [free-exercise-db](https://github.com/yuhonas/free-exercise-db) dataset — **public domain (Unlicense)**, 873 exercises, each with a demonstration image and step-by-step instructions. Data ships in the D1 seed (`src/server/schema.sql`); images are served from jsDelivr, pinned to an immutable commit SHA (`src/client/lib/exercise-image.ts`), so nothing to host and no third-party API to depend on.
-
-## Quickstart
+## Run it on your machine
 
 ```bash
-git clone https://github.com/clawnify/OpenPersonalTraining.git
-cd open-personal-training
 pnpm install
+cp .env.example .env
 pnpm dev
 ```
 
-Open `http://localhost:5173`. The D1 schema — tables plus the full exercise library and example clients/workouts — is applied automatically on startup.
+Open the address the terminal prints. Set `APP_PASSWORD` and `SESSION_SECRET` in `.env` first; the server refuses to serve without them. The first run creates the database and loads the full exercise library plus a few sample clients and workouts, so give it a moment.
 
-## Tech Stack
+Checks before you hand anything in:
 
-| Layer | Technology |
-|-------|-----------|
-| **Frontend** | Preact, TypeScript, Tailwind CSS v4, Vite |
-| **Backend** | Hono (Cloudflare Worker), `@hono/zod-openapi` |
-| **Database** | D1 (SQLite at the edge) via `@clawnify/db` |
-| **Hosting** | Cloudflare Workers (Workers for Platforms via Clawnify) |
+```bash
+pnpm build
+pnpm typecheck
+pnpm smoke          # with the app already running
+pnpm db:export -- exports/my-backup.db
+```
 
-## Data model
+There is a `seed` script left over from the source project that expects a different database tool. You do not need it. The schema and the exercise library are applied for you when the server starts.
 
-`clients` · `exercises` (seeded) · `workouts` → `workout_exercises` (ordered prescriptions) · `sessions` (schedule + assigned programs) · `payments`. See [`src/server/schema.sql`](src/server/schema.sql). The REST contract is generated at `/api/openapi.json`.
+## Where to look when you want to change something
 
-## License
+| What you want to change | Where it lives |
+| --- | --- |
+| Any screen | `src/client/components/` |
+| Building a workout | `src/client/components/workout-builder.tsx` |
+| The exercise library screen | `src/client/components/exercise-library.tsx` |
+| Where exercise pictures come from | `src/client/lib/exercise-image.ts` |
+| Which screen shows for which address | `src/client/hooks/use-router.ts` |
+| How data loads and saves | `src/client/hooks/use-app.ts` |
+| What the API does | `src/server/index.ts` |
+| What gets stored | `src/server/schema.sql` |
+| The class password gate | `src/server/course-app.ts` |
+| How the server starts | `src/server/node.ts` |
 
-MIT — see [LICENSE](LICENSE).
+## What it stores
+
+Clients are the people you coach. Exercises come seeded and you are not expected to add to them. A workout is a list of workout exercises in an order, each with its own sets, reps, rest, and notes. Sessions are the calendar. Payments are a plain ledger of what came in and what is still owed.
+
+## Putting it online
+
+The screen goes on Vercel. The server and the database go on Railway, on a volume, so your clients and workouts survive the night. Step by step in [COURSE_EDITION.md](COURSE_EDITION.md). Copy `vercel.example.json` to `vercel.json` and replace `YOUR-RAILWAY-DOMAIN` with your Railway address, or the live page will have no server to talk to.
+
+## Built with
+
+Preact and TypeScript on Vite for the screen, with Tailwind. Hono on Node 22 for the API, with Zod checking the shape of what comes in. SQLite for storage.
+
+## Source and license
+
+Imported from an open source coaching project. The source project, the exact commit, and what was changed for the course are recorded in [UPSTREAM.md](UPSTREAM.md). The original MIT license and copyright notice are kept in [LICENSE](LICENSE) and stay with any copy you make. Package names still carry the source project's identifiers so the build keeps working.
+
+The exercise library is a separate piece of work. It comes from the free-exercise-db dataset, which is public domain under the Unlicense. The pictures are not stored here; they are loaded from a public file host, pinned to one exact version so they cannot change under you.
+
+This is a course edition, not a product. It is free and noncommercial, and the Celaya Solutions Research Course Edition notice stays on it.
