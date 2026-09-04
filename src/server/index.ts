@@ -1,7 +1,7 @@
 import { createApp, createRoute, z } from "./course-app.js";
 import { query, get, run } from "./db.js";
 
-type Env = { Bindings: { DB: D1Database; CLAWNIFY_TOKEN?: string } };
+type Env = { Bindings: { DB: D1Database; PDF_RENDER_TOKEN?: string } };
 
 const app = createApp<Env>({
   title: "OpenPersonalTraining API",
@@ -1196,8 +1196,8 @@ app.delete("/api/workouts/:id/share", async (c) => {
   return c.json({ ok: true }, 200);
 });
 
-// Public read-only workout view (declared in clawnify.json api.public_routes → no
-// perimeter auth). `?format=pdf` renders the same HTML via the Clawnify PDF service.
+// Public read-only workout view (declared in app.json api.public_routes → no
+// perimeter auth). `?format=pdf` renders the same HTML via an external PDF render service.
 app.get("/api/share/:token", async (c) => {
   const token = c.req.param("token");
   const workout = await get<any>(
@@ -1209,10 +1209,10 @@ app.get("/api/share/:token", async (c) => {
   const html = renderShareHtml(workout, exercises);
 
   if (c.req.query("format") === "pdf") {
-    if (!c.env.CLAWNIFY_TOKEN) return c.text("PDF export is available on the deployed app.", 501);
+    if (!c.env.PDF_RENDER_TOKEN) return c.text("PDF export is available on the deployed app.", 501);
     const r = await fetch("https://services.clawnify.com/pdf/render", {
       method: "POST",
-      headers: { "content-type": "application/json", authorization: `Bearer ${c.env.CLAWNIFY_TOKEN}` },
+      headers: { "content-type": "application/json", authorization: `Bearer ${c.env.PDF_RENDER_TOKEN}` },
       body: JSON.stringify({ html, format: "A4" }),
     });
     if (!r.ok) return c.text("Could not generate the PDF right now.", 502);

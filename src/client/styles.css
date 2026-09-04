@@ -2,7 +2,7 @@
 
 @custom-variant dark (&:is(.dark *));
 
-/* Design tokens follow DESIGN.md (Clawnify Apps design system). Components
+/* Design tokens follow DESIGN.md (Celaya Solutions design system). Components
    reference the shadcn var names below; rebrand by overriding these values. */
 @theme inline {
   --color-background: var(--background);
@@ -58,7 +58,7 @@
   --card-foreground: #1a202c;
   --popover: #ffffff;
   --popover-foreground: #1a202c;
-  --primary: #dd5164;          /* Clawnify coral — the single CTA per screen */
+  --primary: #dd5164;          /* brand coral — the single CTA per screen */
   --primary-foreground: #ffffff;
   --secondary: #f1f5f9;        /* surface-sunken */
   --secondary-foreground: #1a202c;

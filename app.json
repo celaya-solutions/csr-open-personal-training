@@ -1,5 +1,5 @@
 {
-  "$schema": "https://app.clawnify.com/schema/v1/clawnify.json",
+  "$schema": "https://celayasolutions.com/schema/v1/app.json",
   "version": 1,
   "name": "OpenPersonalTraining",
   "description": "All-in-one platform for personal trainers and online coaches: manage clients, build workouts from a library of 800+ illustrated exercises, assign programs, schedule sessions, and track payments. An open alternative to Trainerize, TrueCoach, and My PT Hub.",

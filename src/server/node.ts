@@ -56,7 +56,7 @@ gateway.all("*", (c) => {
     OPENROUTER_API_KEY: process.env.OPENROUTER_API_KEY,
     FAL_API_KEY: process.env.FAL_API_KEY,
     SERPAPI_API_KEY: process.env.SERPAPI_API_KEY,
-    CLAWNIFY_TOKEN: process.env.CLAWNIFY_TOKEN,
+    PDF_RENDER_TOKEN: process.env.PDF_RENDER_TOKEN,
     SERVICES_URL: process.env.SERVICES_URL,
     LISTING_MODEL: process.env.LISTING_MODEL,
   };
