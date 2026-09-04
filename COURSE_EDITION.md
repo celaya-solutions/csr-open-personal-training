@@ -21,7 +21,7 @@ The frontend runs through Vite. The Hono API uses `PORT`. SQLite uses `DB_PATH`;
 
 ## Railway backend
 
-Create one service from this repository. Add a volume mounted at `/app/data`. Set:
+Create one service from this repository. It serves both the screen and the API. Add a volume mounted at `/app/data`. Set:
 
 - `DB_PATH=/app/data/app.db`
 - `UPLOAD_PATH=/app/data/uploads`
@@ -30,17 +30,15 @@ Create one service from this repository. Add a volume mounted at `/app/data`. Se
 
 The app creates its schema at startup because the Railway volume is not present during builds.
 
-## Vercel frontend
-
-Copy `vercel.example.json` to `vercel.json`. Replace `YOUR-RAILWAY-DOMAIN` with the Railway service domain. Import the repository into Vercel and deploy. Browser calls to `/api/*` stay on the Vercel origin and are rewritten to Railway.
+The build command is `pnpm build` and the start command is `pnpm start`. Generate a domain on the service and open it; the same origin serves the screen and `/api/*`, so there is no second host to configure.
 
 ## Safety and current limits
 
 Use fake data only. Never enter customer, tenant, patient, payment, health, or private contact data.
 
-Hosting offers change. As recorded on September 1, 2026, Vercel Hobby documents 200 projects and 50 domains per project. Railway documents a no-card $5 trial for up to 30 days, then $1 monthly free credit; trial volumes may later be removed. Check the linked course lesson before deployment.
+Hosting offers change. As recorded on September 1, 2026, Railway documents a no-card $5 trial for up to 30 days, then $1 monthly free credit; trial volumes may later be removed. Check the linked course lesson before deployment.
 
-Custom domains are optional. Connect a Namecheap domain to Vercel; Vercel continues routing `/api` to Railway.
+Custom domains are optional. Connect a Namecheap domain to the Railway service.
 
 ## Celaya Solutions
 

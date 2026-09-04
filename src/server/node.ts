@@ -1,5 +1,7 @@
 import { createHmac, timingSafeEqual } from "node:crypto";
+import { readFileSync } from "node:fs";
 import { serve } from "@hono/node-server";
+import { serveStatic } from "@hono/node-server/serve-static";
 import { getCookie, setCookie } from "hono/cookie";
 import { Hono } from "hono";
 import app from "./index.js";
@@ -49,7 +51,26 @@ gateway.use("/api/*", async (c, next) => {
   await next();
 });
 
+// Static client. The Vite build in `dist/` is served by this same process, so
+// one Railway service answers both the screen and the API.
+const clientRoot = process.env.CLIENT_ROOT || "dist";
+let indexHtml: string | null = null;
+try {
+  indexHtml = readFileSync(`${clientRoot}/index.html`, "utf8");
+} catch {
+  indexHtml = null;
+}
+
+gateway.use("/assets/*", serveStatic({ root: clientRoot }));
+gateway.get("/favicon.ico", serveStatic({ root: clientRoot }));
+gateway.get("/icon.svg", serveStatic({ root: clientRoot }));
+
 gateway.all("*", (c) => {
+  // Anything that is not an API call is a client route: hand back index.html
+  // and let the in-browser router decide what to render.
+  if (indexHtml && c.req.method === "GET" && !c.req.path.startsWith("/api/")) {
+    return c.html(indexHtml);
+  }
   const bindings = {
     DB: {},
     UPLOADS: {},
