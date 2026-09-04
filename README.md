@@ -1,20 +1,16 @@
-> **Celaya Solutions Research Course Edition.** Read [COURSE_EDITION.md](COURSE_EDITION.md) before you start. Use fake data only.
+# Trainer Studio — Celaya Solutions Course Edition
 
-# Trainer Studio
+Software for a personal trainer: the people you coach, a library of exercises to build workouts from, the workouts themselves, a calendar of sessions, and a record of who has paid.
 
-Project 05 on the [Zero to Agent project shelf](https://zerotoagent.org/course/landing.html#projects). Core track. You fork this at Level 6 and it stays yours through Level 9.
-
-Software for a personal trainer. The people you coach, a library of exercises to build workouts from, the workouts themselves, a calendar of sessions, and a record of who has paid.
+This is a course edition. Read [COURSE_EDITION.md](COURSE_EDITION.md) before you start, and use fake data only.
 
 ## Why this one is on the shelf
 
 Two reasons. First, it starts full. The exercise library is 873 exercises, seeded into the database before you write a line, so you are working with real volume from minute one instead of three rows you typed in yourself. Searching and paging through that is a different problem than searching through nothing.
 
-Second, it is the only Core project that lets a stranger see something without logging in. You can turn any workout into a public link and send it to a client's phone, and you can take the link back. That is a small, safe first look at the question every real app has to answer: who is allowed to see this.
+Second, it is the only project here that lets a stranger see something without logging in. You can turn any workout into a public link and send it to a client's phone, and you can take the link back. That is a small, safe first look at the question every real app has to answer: who is allowed to see this.
 
 ## What you have to change to pass
-
-The same five things are asked of every project on the shelf:
 
 1. A change you can see on the screen.
 2. A change to the server or to what gets stored.
@@ -64,7 +60,13 @@ Clients are the people you coach. Exercises come seeded and you are not expected
 
 ## Putting it online
 
-The screen goes on Vercel. The server and the database go on Railway, on a volume, so your clients and workouts survive the night. Step by step in [COURSE_EDITION.md](COURSE_EDITION.md). Copy `vercel.example.json` to `vercel.json` and replace `YOUR-RAILWAY-DOMAIN` with your Railway address, or the live page will have no server to talk to.
+The screen goes on Vercel. The server and the database go on Railway, on a volume, so your clients and workouts survive the night. Step by step in [COURSE_EDITION.md](COURSE_EDITION.md).
+
+Copy `vercel.example.json` to `vercel.json` and replace `YOUR-RAILWAY-DOMAIN` with your Railway address, or the live page will have no server to talk to. Then deploy from the Vercel dashboard or the CLI:
+
+```bash
+vercel --prod
+```
 
 ## Built with
 
@@ -72,8 +74,8 @@ Preact and TypeScript on Vite for the screen, with Tailwind. Hono on Node 22 for
 
 ## Source and license
 
-Imported from an open source coaching project. The source project, the exact commit, and what was changed for the course are recorded in [UPSTREAM.md](UPSTREAM.md). The original MIT license and copyright notice are kept in [LICENSE](LICENSE) and stay with any copy you make. Package names still carry the source project's identifiers so the build keeps working.
+Imported from an open source coaching project. The source project, the exact commit, and what was changed for the course are recorded in [UPSTREAM.md](UPSTREAM.md). The original MIT license and copyright notice are kept in [LICENSE](LICENSE) and stay with any copy you make.
 
 The exercise library is a separate piece of work. It comes from the free-exercise-db dataset, which is public domain under the Unlicense. The pictures are not stored here; they are loaded from a public file host, pinned to one exact version so they cannot change under you.
 
-This is a course edition, not a product. It is free and noncommercial, and the Celaya Solutions Research Course Edition notice stays on it.
+This is a course edition, not a product. It is free and noncommercial, and the Celaya Solutions Course Edition notice stays on it.

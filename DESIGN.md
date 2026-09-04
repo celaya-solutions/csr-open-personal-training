@@ -1,8 +1,8 @@
 ---
 version: alpha
-name: Clawnify Apps
+name: Celaya Solutions Course Edition
 description: >-
-  The shared design system for every app built on the Clawnify app builder
+  The shared design system for every app built on the Celaya Solutions app template
   (template-app-internal: Hono + React + Vite + tRPC + Tailwind + shadcn/ui).
   This file is the single source of truth for visuals. Every deployed app
   inherits it; an app or agency overrides individual tokens below to rebrand
@@ -23,7 +23,7 @@ colors:
   border: "#E2E8F0"           # hairlines, card outlines, zone dividers
   ring: "#2563EB"             # focus ring — the ONLY blue in the chrome
   link: "#2563EB"             # inline text links (same blue as ring)
-  # ── Brand action (primary = Clawnify coral, shared with the dashboard) ──
+  # ── Brand action (primary = Celaya Solutions coral, shared with the dashboard) ──
   primary: "#DD5164"          # the single coral CTA per screen — same hue as the dashboard
   primary-hover: "#C53A4E"    # darkens on hover (never lightens)
   on-primary: "#FFFFFF"
@@ -290,23 +290,23 @@ components:
     rounded: "{rounded.sm}"
 ---
 
-# Clawnify Apps — Design System
+# Celaya Solutions Course Edition — Design System
 
 ## Overview
 
-Clawnify apps are **internal tools and management platforms for mid-market companies**: catalogs, quote-to-invoice queues, CRMs, project trackers, client portals, admin panels. The buyer is an operations person or the agency serving them, not a consumer. So the look is **dense, quiet, and engineered** — the tier of Linear, Attio, and Ramp, not the tier of a vibe-coded demo.
+Celaya Solutions apps are **internal tools and management platforms for mid-market companies**: catalogs, quote-to-invoice queues, CRMs, project trackers, client portals, admin panels. The buyer is an operations person or the agency serving them, not a consumer. So the look is **dense, quiet, and engineered** — the tier of Linear, Attio, and Ramp, not the tier of a vibe-coded demo.
 
-The job of this file is twofold. First, a **floor**: enough opinion to eliminate the generic "AI-generated interface" aesthetic (purple gradients, glowing buttons, emoji section headers, oversized hero type). Second, a **signature**: a small set of recognizable moves — codified from the Clawnify pricing cards (`apps/web/src/app/pricing/page.tsx`), the most detailed surface we've shipped — so that every app, whatever its domain, is identifiably *a Clawnify app* the way every Linear screen is identifiably Linear.
+The job of this file is twofold. First, a **floor**: enough opinion to eliminate the generic "AI-generated interface" aesthetic (purple gradients, glowing buttons, emoji section headers, oversized hero type). Second, a **signature**: a small set of recognizable moves — codified from the Celaya Solutions pricing cards (`apps/web/src/app/pricing/page.tsx`), the most detailed surface we've shipped — so that every app, whatever its domain, is identifiably *a Celaya Solutions app* the way every Linear screen is identifiably Linear.
 
 The format follows the [Google Labs DESIGN.md spec](https://github.com/google-labs-code/design.md), same as the websites' `docs/internal/DESIGN.md`. Tokens in frontmatter give agents and tooling exact values; the prose explains *why*.
 
-## The Clawnify Signature
+## The Celaya Solutions Signature
 
 Five moves, applied everywhere. An app missing these looks generic; an app with all five looks like ours.
 
 ### 1. Labeled zones, not blobs
 
-A Clawnify container is **anatomy, not a padded box**. Cards, panels, and detail views are divided into stacked zones by hairline `border` dividers (`card-zone`), and **every zone opens with an `eyebrow`** — an 11px uppercase tracked label in `muted` naming what the zone contains:
+A Celaya Solutions container is **anatomy, not a padded box**. Cards, panels, and detail views are divided into stacked zones by hairline `border` dividers (`card-zone`), and **every zone opens with an `eyebrow`** — an 11px uppercase tracked label in `muted` naming what the zone contains:
 
 ```
 ┌──────────────────────────────────┐
@@ -326,7 +326,7 @@ This is the single highest-leverage move. Generic AI UIs ship one `<h3>` and a w
 
 ### 2. One coral action
 
-**The primary button is Clawnify coral (`primary` = `#DD5164`) — and there is exactly one per screen.** It darkens on hover (`primary-hover`), never lightens. This is the same coral the dashboard uses for its primary CTA, so a generated app and the dashboard read as one product — that single shared hue is what makes the whole platform feel like one SaaS. Coral is the **default**; an app or agency can override `primary`/`primary-hover` to its own brand color (see *Overriding This File*) and every button reflows.
+**The primary button is Celaya Solutions coral (`primary` = `#DD5164`) — and there is exactly one per screen.** It darkens on hover (`primary-hover`), never lightens. This is the same coral the dashboard uses for its primary CTA, so a generated app and the dashboard read as one product — that single shared hue is what makes the whole platform feel like one SaaS. Coral is the **default**; an app or agency can override `primary`/`primary-hover` to its own brand color (see *Overriding This File*) and every button reflows.
 
 Everything else in the chrome stays **monochrome**. The coral is rationed to that one solid CTA — the only other coral on screen is the soft 12% tint marking the **active sidebar item** (a location indicator, not an action). Color elsewhere is reserved for:
 
@@ -362,7 +362,7 @@ Neutral-dominant; the full palette ships in light and dark (`*-dark` applies und
 - **`muted` (#475569):** secondary text. Deliberately darker than the usual slate-500 so it passes WCAG AA (4.5:1) even on `surface-sunken` — table headers and eyebrows must stay readable.
 - **`faint` (#94A3B8):** placeholders, disabled states, decorative icons. Never for text that must be read.
 - **`border` (#E2E8F0):** the workhorse — card outlines, zone dividers, table separators, input borders.
-- **`primary` (#DD5164) / `primary-hover` (#C53A4E):** Clawnify coral — the single brand CTA per screen, shared with the dashboard. Darkens on hover. The default; overridable per app.
+- **`primary` (#DD5164) / `primary-hover` (#C53A4E):** Celaya Solutions coral — the single brand CTA per screen, shared with the dashboard. Darkens on hover. The default; overridable per app.
 - **`ring` / `link` (#2563EB):** the only chromatic blue, confined to focus indication and inline links — never a button.
 - **Status triplets:** each of `success`/`warning`/`danger` has a text tone and a `*-tint` background, both with dark variants. Tints exist **so components never hardcode a hex** — `button-danger-hover` and the badges reference them.
 
@@ -481,7 +481,7 @@ function pillColor(value: string) {
 
 ## The Floor: Even a Todo App
 
-The signature is **not reserved for big apps**. The simplest possible request — "make me a todo app" — must still come out looking engineered. The minimum any Clawnify app ships with, however trivial the brief:
+The signature is **not reserved for big apps**. The simplest possible request — "make me a todo app" — must still come out looking engineered. The minimum any Celaya Solutions app ships with, however trivial the brief:
 
 ```
 ┌─ Toolbar ──────────────────────────────────────┐
@@ -510,7 +510,7 @@ If the brief is trivial, spend the saved effort on these six, not on inventing l
 
 ### Agent & human dual-mode
 
-Every Clawnify app runs for two callers: a human in the dashboard and an agent driving a browser. Detect agent mode (`?agent` / `mode=agent`) and set `data-agent` on `<html>`. In agent mode: bump interactive targets to `tap-target-agent` (40–44px), make every action a visible `<button>` with a descriptive `aria-label`, and hide hover-only affordances (drag handles, ellipsis menus, click-to-edit). Never gate an action behind hover or right-click in agent mode. Use semantic HTML (`<table>`/`<th>`/`<td>`, real `<button>`s, correct `<input type>`); never `alert()`/`confirm()`/`prompt()` or `localStorage`.
+Every Celaya Solutions app runs for two callers: a human in the dashboard and an agent driving a browser. Detect agent mode (`?agent` / `mode=agent`) and set `data-agent` on `<html>`. In agent mode: bump interactive targets to `tap-target-agent` (40–44px), make every action a visible `<button>` with a descriptive `aria-label`, and hide hover-only affordances (drag handles, ellipsis menus, click-to-edit). Never gate an action behind hover or right-click in agent mode. Use semantic HTML (`<table>`/`<th>`/`<td>`, real `<button>`s, correct `<input type>`); never `alert()`/`confirm()`/`prompt()` or `localStorage`.
 
 ## Overriding This File
 

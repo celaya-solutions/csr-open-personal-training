@@ -1,6 +1,6 @@
-# OpenPersonalTraining: Research Course Edition
+# OpenPersonalTraining: Course Edition
 
-This is the Celaya Solutions Research Course Edition. It is a full-stack practice app with fake seed data.
+This is the Celaya Solutions Course Edition. It is a full-stack practice app with fake seed data.
 
 ## Local start
 
@@ -44,7 +44,7 @@ Custom domains are optional. Connect a Namecheap domain to Vercel; Vercel contin
 
 ## Celaya Solutions
 
-- Research Course Edition
+- Course Edition
 - hello@celayasolutions.com
 - https://www.celayasolutions.com
 - (915) 755-5705

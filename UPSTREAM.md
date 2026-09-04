@@ -7,4 +7,4 @@
 - Course changes: Node 22 Hono server, persistent SQLite, local uploads where needed, password session, Railway and Vercel instructions
 - Original license and copyright notices are preserved in this repository.
 
-This repository is co-branded “Celaya Solutions Research Course Edition.” It does not claim ownership of the upstream work.
+This repository is co-branded “Celaya Solutions Course Edition.” It does not claim ownership of the upstream work.
