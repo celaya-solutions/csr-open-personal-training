@@ -14,7 +14,7 @@ Second, it is the only project here that lets a stranger see something without l
 
 1. A change you can see on the screen.
 2. A change to the server or to what gets stored.
-3. The frontend live on Vercel.
+3. The app live on the internet.
 4. The backend running on Railway, still running tomorrow.
 5. A three minute demo: the problem, the before, the after.
 
@@ -60,12 +60,10 @@ Clients are the people you coach. Exercises come seeded and you are not expected
 
 ## Putting it online
 
-The screen goes on Vercel. The server and the database go on Railway, on a volume, so your clients and workouts survive the night. Step by step in [COURSE_EDITION.md](COURSE_EDITION.md).
-
-Copy `vercel.example.json` to `vercel.json` and replace `YOUR-RAILWAY-DOMAIN` with your Railway address, or the live page will have no server to talk to. Then deploy from the Vercel dashboard or the CLI:
+Everything runs as one Railway service: the same Node process serves the built screen out of `dist/` and answers `/api/*`. The database lives on a Railway volume so your clients and workouts survive the night. Step by step in [COURSE_EDITION.md](COURSE_EDITION.md).
 
 ```bash
-vercel --prod
+railway up
 ```
 
 ## Built with
